@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <title>Vip Service - Control Panel</title>
+	    <meta name="description" content="Vip Service Control Panel">
+	    <meta name="keyword" content="vip, service, vip service, flight, airport">
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<!-- Apple devices fullscreen -->
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<!-- Apple devices fullscreen -->
+		<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+			<!-- Bootstrap -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<!-- Bootstrap responsive -->
+		<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+		<!-- jQuery UI -->
+		<link rel="stylesheet" href="css/plugins/jquery-ui/smoothness/jquery-ui.css">
+		<link rel="stylesheet" href="css/plugins/jquery-ui/smoothness/jquery.ui.theme.css">
+		<!-- dataTables -->
+		<link rel="stylesheet" href="css/plugins/datatable/TableTools.css">
+		<!-- chosen -->
+		<link rel="stylesheet" href="css/plugins/chosen/chosen.css">
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href="css/style.css">
+		<!-- Color CSS -->
+		<link rel="stylesheet" href="css/themes.css">
+
+		<!-- jQuery -->
+		<script src="js/jquery.min.js"></script>
+		
+		<!-- Nice Scroll -->
+		<script src="js/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+		<!-- imagesLoaded -->
+		<script src="js/plugins/imagesLoaded/jquery.imagesloaded.min.js"></script>
+		<!-- jQuery UI -->
+		<script src="js/plugins/jquery-ui/jquery.ui.core.min.js"></script>
+		<script src="js/plugins/jquery-ui/jquery.ui.widget.min.js"></script>
+		<script src="js/plugins/jquery-ui/jquery.ui.mouse.min.js"></script>
+		<script src="js/plugins/jquery-ui/jquery.ui.resizable.min.js"></script>
+		<script src="js/plugins/jquery-ui/jquery.ui.sortable.min.js"></script>
+		<script src="js/plugins/jquery-ui/jquery.ui.datepicker.min.js"></script>
+		<!-- slimScroll -->
+		<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		<!-- Bootstrap -->
+		<script src="js/bootstrap.min.js"></script>
+		<!-- Bootbox -->
+		<script src="js/plugins/bootbox/jquery.bootbox.js"></script>
+		<!-- dataTables -->
+		<script src="js/plugins/datatable/jquery.dataTables.min.js"></script>
+		<script src="js/plugins/datatable/TableTools.min.js"></script>
+		<script src="js/plugins/datatable/ColReorderWithResize.js"></script>
+		<script src="js/plugins/datatable/ColVis.min.js"></script>
+		<script src="js/plugins/datatable/jquery.dataTables.columnFilter.js"></script>
+		<script src="js/plugins/datatable/jquery.dataTables.grouping.js"></script>
+		<!-- Chosen -->
+		<script src="js/plugins/chosen/chosen.jquery.min.js"></script>
+
+		<!-- Theme framework -->
+		<script src="js/eakroko.min.js"></script>
+		<!-- Theme scripts -->
+		<script src="js/application.min.js"></script>
+		<!-- Just for demonstration -->
+		<script src="js/demonstration.min.js"></script>
+
+		<!--[if lte IE 9]>
+			<script src="js/plugins/placeholder/jquery.placeholder.min.js"></script>
+			<script>
+				$(document).ready(function() {
+					$('input, textarea').placeholder();
+				});
+			</script>
+		<![endif]-->
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="img/favicon.ico" />
+		<!-- Apple devices Homescreen icon -->
+		<link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-precomposed.png" />
+
+	</head>
+
+	<body>
+		<div id="navigation">
+			<div class="container-fluid">
+				<a href="#" id="brand">Control Panel</a>			
+				<div class="user">
+					<ul class="icon-nav">
+																
+						<li class="dropdown sett">
+							<a href="#" class='dropdown-toggle' data-toggle="dropdown"><i class="icon-cog"></i></a>
+							<ul class="dropdown-menu pull-right theme-settings">
+								<li>
+									<span>Layout-width</span>
+									<div class="version-toggle">
+										<a href="#" class='set-fixed'>Fixed</a>
+										<a href="#" class="active set-fluid">Fluid</a>
+									</div>
+								</li>
+								<li>
+									<span>Topbar</span>
+									<div class="topbar-toggle">
+										<a href="#" class='set-topbar-fixed'>Fixed</a>
+										<a href="#" class="active set-topbar-default">Default</a>
+									</div>
+								</li>
+								<li>
+									<span>Sidebar</span>
+									<div class="sidebar-toggle">
+										<a href="#" class='set-sidebar-fixed'>Fixed</a>
+										<a href="#" class="active set-sidebar-default">Default</a>
+									</div>
+								</li>
+							</ul>
+						</li>
+						<li class='dropdown colo'>
+							<a href="#" class='dropdown-toggle' data-toggle="dropdown"><i class="icon-tint"></i></a>
+							<ul class="dropdown-menu pull-right theme-colors">
+								<li class="subtitle">
+									Predefined colors
+								</li>
+								<li>
+									<span class='red'></span>
+									<span class='orange'></span>
+									<span class='green'></span>
+									<span class="brown"></span>
+									<span class="blue"></span>
+									<span class='lime'></span>
+									<span class="teal"></span>
+									<span class="purple"></span>
+									<span class="pink"></span>
+									<span class="magenta"></span>
+									<span class="grey"></span>
+									<span class="darkblue"></span>
+									<span class="lightred"></span>
+									<span class="lightgrey"></span>
+									<span class="satblue"></span>
+									<span class="satgreen"></span>
+								</li>
+							</ul>
+						</li>
+						<li class='dropdown language-select'>
+							<a href="#" class='dropdown-toggle' data-toggle="dropdown"><img src="img/demo/flags/us.gif" alt=""><span>US</span></a>						
+						</li>
+					</ul>
+					<div class="dropdown">
+						<a href="#" class='dropdown-toggle' data-toggle="dropdown">Admin<img src="img/demo/user-avatar.jpg" alt=""></a>
+						<ul class="dropdown-menu pull-right">						
+							<li>
+								<a href="#">Change password</a>
+							</li>
+							<li>
+								<a href="more-login.html">Sign out</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>		
+		<div class="container-fluid" id="content">
+			<div id="left">			
+				<div class="subnav">
+					<div class="subnav-title">
+						<a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Orders</span></a>
+					</div>
+					<ul class="subnav-menu">					
+						<li>
+							<a href="cpanel-view.html#">View</a>
+						</li>
+						<li>
+							<a href="cpanel-add.html#">Add</a>
+						</li>					
+					</ul>				
+				</div>						
+			</div>
+
+			<div id="main">
+				<div class="container-fluid">				
+					<div class="row-fluid">
+						<div class="span12">				
+							<div class="box box-color box-bordered">
+								<div class="box-title">
+									<h3>
+										Orders
+									</h3>
+								</div>
+								<div class="box-content nopadding">
+									<table class="table table-hover table-nomargin table-bordered usertable">
+										<thead>
+											<tr class='thefilter'>
+												<th class='with-checkbox'></th>
+												<th>Leader</th>
+												<th>Airport</th>
+												<th class='hidden-350'>A/D</th>
+												<th class='hidden-1024'>Date</th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th class='hidden-480'></th>
+											</tr>
+											<tr>
+												<th class='with-checkbox'><input type="checkbox" name="check_all" id="check_all"></th>
+												<th>Leader</th>
+												<th>Airport</th>
+												<th class='hidden-350'>A/D</th>
+												<th class='hidden-1024'	>Date</th>
+												<th>Time</th>
+												<th>Flight number</th>
+												<th>Group size</th>
+												<th>Phonenumber</th>
+												<th class='hidden-480'>Options</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="with-checkbox">
+													<input type="checkbox" name="check" value="1">
+												</td>
+												<td>John Doe</td>
+												<td>Nội Bài - Hà Nội</td>
+												<td class='hidden-350'>Arrival</td>
+												<td class='hidden-1024'>03/07/2013</td>
+												<td>16:50</td>
+												<td>MT12345</td>
+												<td>12</td>
+												<td>(+84) 1223343441</td>
+												<td class='hidden-480'>
+													<!-- <a href="#" class="btn" rel="tooltip" title="Show"><i class="icon-search"></i></a> -->
+													<a href="cpanel-edit.html?id=1#" class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
+													<a href="#" class="btn" rel="tooltip" title="Delete"><i class="icon-remove"></i></a>
+												</td>
+											</tr>
+											<tr>
+												<td class="with-checkbox">
+													<input type="checkbox" name="check" value="1">
+												</td>
+												<td>Jane Doe</td>
+												<td>Tân Sơn Nhất - Tp. Hồ Chí Minh</td>
+												<td class='hidden-350'>Departure</td>
+												<td class='hidden-1024'>02/07/2013</td>
+												<td>06:30</td>
+												<td>EB12345</td>
+												<td>3</td>
+												<td>(+84) 5813643471</td>
+												<td class='hidden-480'>
+													<!-- <a href="#" class="btn" rel="tooltip" title="Show"><i class="icon-search"></i></a> -->
+													<a href="cpanel-edit.html?id=2#" class="btn" rel="tooltip" title="Edit"><i class="icon-edit"></i></a>
+													<a href="#" class="btn" rel="tooltip" title="Delete"><i class="icon-remove"></i></a>
+												</td>
+											</tr>									
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>						
+					</div>
+				</div>				
+			</div>
+		</div>
+			
+	</body>
+
+</html>
+
