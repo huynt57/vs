@@ -2,6 +2,8 @@
 
 class StaffController extends Controller {
 
+    public $title;
+    
     public function actionIndex() {
         $orders = BookService::model()->findAllByAttributes(array('status' => 1));
         $this->render('index', array('orders' => $orders));
@@ -37,7 +39,6 @@ class StaffController extends Controller {
             $order->status = 5;
             $this->sendMailSorry($order->email);
             $order->save(FALSE);
-
             Yii::app()->user->setFlash('success', "Order rejected !");
             $this->redirect(Yii::app()->createUrl('admin/staff'));
         }
@@ -47,7 +48,7 @@ class StaffController extends Controller {
         try {
             $this->title = "Mail test";
             $mail = new YiiMailer();
-            $mail->setView('confirm');
+            $mail->setView('sorry');
             $mail->setFrom('harajuku.chelsea.1994@gmail.com', 'John Doe');
             $mail->setSubject('Confirm your order');
             $mail->setTo($email);
