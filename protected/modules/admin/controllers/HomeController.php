@@ -26,7 +26,11 @@ class HomeController extends Controller {
                         Yii::app()->session['email'] = $user->email;
                         Yii::app()->session['username'] = $user->username;
                         Yii::app()->session['permission'] = $user->permission;
-                        $this->redirect(Yii::app()->createUrl('admin/order'));
+                        if ($user->permission == 1) {
+                            $this->redirect(Yii::app()->createUrl('admin/order'));
+                        } else {
+                            $this->redirect(Yii::app()->createUrl('admin/staff'));
+                        }
                     } else {
                         Yii::app()->user->setFlash('fail', "Wrong Password");
                         $this->redirect(Yii::app()->createUrl('admin/home/login'));

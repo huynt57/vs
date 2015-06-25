@@ -22,6 +22,7 @@
  * @property string $contact_num_2
  * @property string $flight_number
  * @property integer $size
+ * @property integer $status
  */
 class BookService extends CActiveRecord
 {
@@ -41,11 +42,11 @@ class BookService extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('size', 'numerical', 'integerOnly'=>true),
+			array('size, status', 'numerical', 'integerOnly'=>true),
 			array('airport, date, flight_time, name, add1, add2, add3, city, province, country, post_code, email, contact_num, type, contact_num_2, flight_number', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, airport, date, flight_time, name, add1, add2, add3, city, province, country, post_code, email, contact_num, type, contact_num_2, flight_number, size', 'safe', 'on'=>'search'),
+			array('id, airport, date, flight_time, name, add1, add2, add3, city, province, country, post_code, email, contact_num, type, contact_num_2, flight_number, size, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -84,6 +85,7 @@ class BookService extends CActiveRecord
 			'contact_num_2' => 'Contact Num 2',
 			'flight_number' => 'Flight Number',
 			'size' => 'Size',
+			'status' => 'Status',
 		);
 	}
 
@@ -123,6 +125,7 @@ class BookService extends CActiveRecord
 		$criteria->compare('contact_num_2',$this->contact_num_2,true);
 		$criteria->compare('flight_number',$this->flight_number,true);
 		$criteria->compare('size',$this->size);
+		$criteria->compare('status',$this->status);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

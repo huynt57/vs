@@ -7,6 +7,7 @@ require_once(Yii::getPathOfAlias('application.components.vendor') . '/autoload.p
 
 class BookServiceController extends Controller {
 
+    public $title;
     public $layoutPath;
     public $layout;
     public $step = 1;
@@ -142,8 +143,7 @@ class BookServiceController extends Controller {
                 $this->bill_postcode = $this->getPostFilter('bill_postcode');
 
                 $apiContext = new \PayPal\Rest\ApiContext(new \PayPal\Auth\OAuthTokenCredential(
-                        "AZxYt_EVUMu9xXO0DHBHn4KGUVx6UMIdQKAb7QeCek609Zo3lFCAIfIKs29-T4PL66cSoN6189SfoACj", 
-                        "ELebkFS3jmn9CNu4PF1t8OWaIsHASMDalHKp9x1dwEo0KmeKo582SfeVIC3CC99tmin7NoJZp00jI2Oc"));
+                        "AZxYt_EVUMu9xXO0DHBHn4KGUVx6UMIdQKAb7QeCek609Zo3lFCAIfIKs29-T4PL66cSoN6189SfoACj", "ELebkFS3jmn9CNu4PF1t8OWaIsHASMDalHKp9x1dwEo0KmeKo582SfeVIC3CC99tmin7NoJZp00jI2Oc"));
 
                 $addr = new \PayPal\Api\Address();
                 $addr->setLine1($this->bill_address);
@@ -162,37 +162,23 @@ class BookServiceController extends Controller {
                 $card->setLastName($this->last_name);
                 $card->setBillingAddress($addr);
 
-
-
                 $fi = new \PayPal\Api\FundingInstrument();
                 $fi->setCreditCard($card);
 
                 $payer = new \PayPal\Api\Payer();
                 $payer->setPaymentMethod('credit_card');
                 $payer->setFundingInstruments(array($fi));
-                // $payer->setPayerInfo($payer_info);
-//
-//                $amountDetails = new PayPal\Api\Details();
-//                $amountDetails->setSubtotal('0.1');
-//                $amountDetails->setTax('0.01');
-//                $amountDetails->setShipping('0.01');
-//
                 $amount = new \PayPal\Api\Amount();
                 $amount->setCurrency('USD');
                 $amount->setTotal('0.12');
-//
 
                 $transaction = new \PayPal\Api\Transaction();
                 $transaction->setAmount($amount);
                 $transaction->setDescription('This is the payment transaction description.');
-////die();
-////
-//
+
                 $redirectUrls = new \PayPal\Api\RedirectUrls();
                 $redirectUrls->setReturnUrl(Yii::app()->createAbsoluteUrl('bookService/step3' . '?success=true'))
                         ->setCancelUrl(Yii::app()->createAbsoluteUrl('bookService/step3' . '?success=false'));
-//
-//
                 $payment = new \PayPal\Api\Payment();
                 $payment->setIntent('sale');
                 $payment->setPayer($payer);
@@ -204,18 +190,9 @@ class BookServiceController extends Controller {
                     echo $e->getData(); // This will print a JSON which has specific details about the error.
                     // exit(1);
                 }
-
-                //$approvalUrl = $payment->getApprovalLink();
-                // echo $approvalUrl;
-                //$this->redirect($approvalUrl);
-                // $this->debug($approvalUrl);
-                //echo CJSON::encode($payment);
-                //   echo $res;
-                //  $this->debug($res);
-                //   $this->debug($redirectUrls);
-                //   echo json_encode($t);
-                //  $this->redirect($redirectUrls->getReturnUrl());
                 $this->nextStep(3);
+                $this->SendMailConfirm($value);
+
                 $this->redirectStep(3);
             } catch (exception $e) {
                 var_dump($e->getMessage());
@@ -225,36 +202,6 @@ class BookServiceController extends Controller {
     }
 
     public function actionStep3() {
-//        $this->layoutPath = Yii::getPathOfAlias('webroot') . "/themes/classic/views/layouts";
-//        $this->layout = 'nonPrepare';
-//        if (isset($_GET['success']) && $_GET['success'] == 'true') {
-//            $apiContext = new ApiContext(new OAuthTokenCredential(
-//                    "AZxYt_EVUMu9xXO0DHBHn4KGUVx6UMIdQKAb7QeCek609Zo3lFCAIfIKs29-T4PL66cSoN6189SfoACj", "ELebkFS3jmn9CNu4PF1t8OWaIsHASMDalHKp9x1dwEo0KmeKo582SfeVIC3CC99tmin7NoJZp00jI2Oc"));
-//            $paymentId = $_GET['paymentId'];
-//            $payment = Payment::get($paymentId, $apiContext);
-//
-//            $execution = new PaymentExecution();
-//            $execution->setPayerId($_GET['PayerID']);
-//
-//            try {
-//                // Execute the payment
-//                // (See bootstrap.php for more on `ApiContext`)
-//                $result = $payment->execute($execution, $apiContext);
-//                try {
-//                    $payment = Payment::get($paymentId, $apiContext);
-//                } catch (Exception $ex) {
-//
-//                    exit(1);
-//                }
-//            } catch (Exception $ex) {
-//
-//                exit(1);
-//            }
-//            return $payment;
-//        } else {
-//
-//            exit;
-//        }
         $this->checkSession(3);
         $this->render('step3');
     }
@@ -269,7 +216,9 @@ class BookServiceController extends Controller {
     }
 
     public function saveDbStepOne() {
-        if (isset($this->airport, $this->date, $this->flight_time, $this->name, $this->add1, $this->postCode, $this->email, $this->contact_num, $this->size, $this->flight_number, $this->type)) {
+        if (isset($this->airport, $this->date, $this->flight_time, $this->name, $this->add1, 
+                $this->postCode, $this->email, $this->contact_num, $this->size, $this->flight_number, 
+                $this->type)) {
             $model = new BookService;
             $model->airport = $this->airport;
             $model->date = $this->date;
@@ -278,18 +227,16 @@ class BookServiceController extends Controller {
             $model->name = $this->name;
             $model->add1 = $this->add1;
             $model->type = $this->type;
-//            $model->add2 = $this->add2;
-//            $model->add3 = $this->add3;
             $model->city = $this->city;
-            //  $model->province = $this->province;
-            //   $model->country = $this->country;
             $model->post_code = $this->postCode;
             $model->email = $this->email;
             $model->contact_num = $this->contact_num;
             $model->contact_num_2 = $this->contact_num_2;
             $model->size = $this->size;
-
+            $model->status = 1;
             $model->save(FALSE);
+            Yii::app()->session['id'] = $model->id;
+           
         }
     }
 
@@ -333,13 +280,21 @@ class BookServiceController extends Controller {
         $debugInfo = sprintf('<pre>%s</pre>', print_r($var, true));
         print_r($lineInfo . $debugInfo);
     }
-    
-    public function actionSendMail()
-    {
-        $mail = new YiiMailer();
-        $mail->Body = "";
-        $mail->send();
-        
+
+    public function SendMailConfirm() {
+        try {
+            $data = BookService::model()->findByAttributes(array('id' => Yii::app()->session['id']));
+            $this->title = "Mail test";
+            $mail = new YiiMailer();
+            $mail->setView('confirm');
+            $mail->setFrom('harajuku.chelsea.1994@gmail.com', 'John Doe');
+            $mail->setSubject('Confirm your order');
+            $mail->setTo($data->email);
+            $mail->send();
+            var_dump($mail->getError());
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+        }
     }
 
     // Uncomment the following methods and override them if needed

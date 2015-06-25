@@ -19,6 +19,7 @@ return array(
         'application.components.Paypal.Rest.*',
         'ext.giix-components.*', // giix components
         'ext.giix-core.*', // giix components
+        'ext.YiiMailer.YiiMailer',
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool
