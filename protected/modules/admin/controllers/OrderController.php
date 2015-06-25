@@ -2,26 +2,16 @@
 
 class OrderController extends Controller {
 
-    public $airport = NULL;
-    public $date = NULL;
-    public $flight_time = NULL;
-    public $flight_number = NULL;
-    //data for contact
-
-    public $name = NULL;
-    public $add1 = NULL;
-    public $add2 = NULL;
-    public $add3 = NULL;
-    public $city = NULL;
-    public $province = NULL;
-    public $country = NULL;
-    public $postCode = NULL;
-    public $email = NULL;
-    public $contact_num = NULL;
-    public $contact_num_2 = NULL;
-    public $size = NULL;
-    public $type = NULL;
-    public $id = NULL;
+    public function beforeAction() {
+        $permission = Yii::app()->session['permission'];
+        if (isset($permission)) {
+            if ($permission != 1) {
+                $this->redirect(Yii::app()->createUrl('admin/staff'));
+            }
+        } else {
+            $this->redirect(Yii::app()->createUrl('admin/home/login'));
+        }
+    }
 
     public function actionIndex() {
         $order = BookService::model()->findAll();
