@@ -35,9 +35,26 @@ class StaffController extends Controller {
             $id = Yii::app()->request->getQuery('id');
             $order = BookService::model()->findByAttributes(array('id' => $id));
             $order->status = 5;
+            $this->sendMailSorry($order->email);
             $order->save(FALSE);
+
             Yii::app()->user->setFlash('success', "Order rejected !");
             $this->redirect(Yii::app()->createUrl('admin/staff'));
+        }
+    }
+
+    public function sendMailSorry($email) {
+        try {
+            $this->title = "Mail test";
+            $mail = new YiiMailer();
+            $mail->setView('confirm');
+            $mail->setFrom('harajuku.chelsea.1994@gmail.com', 'John Doe');
+            $mail->setSubject('Confirm your order');
+            $mail->setTo($email);
+            $mail->send();
+            var_dump($mail->getError());
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
         }
     }
 
