@@ -143,7 +143,8 @@ class BookServiceController extends Controller {
                 $this->bill_postcode = $this->getPostFilter('bill_postcode');
 
                 $apiContext = new \PayPal\Rest\ApiContext(new \PayPal\Auth\OAuthTokenCredential(
-                        "AZxYt_EVUMu9xXO0DHBHn4KGUVx6UMIdQKAb7QeCek609Zo3lFCAIfIKs29-T4PL66cSoN6189SfoACj", "ELebkFS3jmn9CNu4PF1t8OWaIsHASMDalHKp9x1dwEo0KmeKo582SfeVIC3CC99tmin7NoJZp00jI2Oc"));
+                        "AZxYt_EVUMu9xXO0DHBHn4KGUVx6UMIdQKAb7QeCek609Zo3lFCAIfIKs29-T4PL66cSoN6189SfoACj", 
+                        "ELebkFS3jmn9CNu4PF1t8OWaIsHASMDalHKp9x1dwEo0KmeKo582SfeVIC3CC99tmin7NoJZp00jI2Oc"));
 
                 $addr = new \PayPal\Api\Address();
                 $addr->setLine1($this->bill_address);
@@ -191,8 +192,8 @@ class BookServiceController extends Controller {
                     // exit(1);
                 }
                 $this->nextStep(3);
-                $this->SendMailConfirm($value);
-
+                $this->SendMailConfirm();
+               // die();
                 $this->redirectStep(3);
             } catch (exception $e) {
                 var_dump($e->getMessage());
@@ -235,7 +236,7 @@ class BookServiceController extends Controller {
             $model->size = $this->size;
             $model->status = 1;
             $model->save(FALSE);
-            Yii::app()->session['id'] = $model->id;
+            Yii::app()->session['order_id'] = $model->id;
            
         }
     }
@@ -262,7 +263,6 @@ class BookServiceController extends Controller {
     public function getPostFilter($postName) {
         $value = Yii::app()->request->getPost($postName);
         $value = StringHelper::filterString($value);
-
         return $value;
     }
 
@@ -283,10 +283,11 @@ class BookServiceController extends Controller {
 
     public function SendMailConfirm() {
         try {
-            $data = BookService::model()->findByAttributes(array('id' => Yii::app()->session['id']));
+            $data = BookService::model()->findByAttributes(array('id' => Yii::app()->session['order_id']));
             $this->title = "Mail test";
             $mail = new YiiMailer();
             $mail->setView('confirm');
+            $mail->setData(array('data' => $data));
             $mail->setFrom('harajuku.chelsea.1994@gmail.com', 'John Doe');
             $mail->setSubject('Confirm your order');
             $mail->setTo($data->email);

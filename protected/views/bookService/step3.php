@@ -8,8 +8,8 @@
 
                 <div class="box-content">
                     <div class="row-fluid">                                                                                
-                        <h3>Transaction completed! Thanks for using our service</h3>                                        
-                        <h5>Any question ? Contact us</h5>
+                        <h3>Transaction completed! Thanks for using our service. Please check your email to see your order</h3>                                        
+                        <h5>Any question ? <a href="<?php echo Yii::app()->createUrl('aboutUs')?>">Contact us</a></h5>
                     </div>
                 </div>
             </div>

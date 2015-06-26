@@ -120,7 +120,7 @@
                     <center>
                         <table border="0" width="600" cellpadding="0" cellspacing="0">
                             <tr>
-                                <td style="color:#ffffff !important; font-size:24px; font-family: Arial, Verdana, sans-serif; padding-left:10px;" height="40"><img src="../img/email-logo.jpg" alt="" style="display:block;" /></td>
+                                <td style="color:#ffffff !important; font-size:24px; font-family: Arial, Verdana, sans-serif; padding-left:10px;" height="40"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/img/email-logo.jpg" alt="" style="display:block;" /></td>
                                 <td align="right" width="50" height="45"><a href="http://vipservice.vn"></a></td>
                             </tr>
                         </table>
