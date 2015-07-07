@@ -31,6 +31,9 @@ return array(
             'ipFilters' => array('127.0.0.1', '::1'),
         ),
         'admin',
+        'sitemap' => array(
+            'class' => 'ext.sitemap.SitemapModule', //or whatever the correct path is         
+        ),
     ),
     // application components
     'components' => array(

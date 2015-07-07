@@ -126,7 +126,7 @@
             <!-- The justified navigation menu is meant for single line per list item.
                  Multiple lines will require custom code not provided by Bootstrap. -->
             <div class="masthead">
-                <h1 class="text-muted">Vip Service</h1>
+                <a href="<?php echo Yii::app()->createAbsoluteUrl('bookService') ?>"><h1 class="text-muted">Vip Service</h1></a>
                 <div id="google_translate_element"></div><script type="text/javascript">
                     function googleTranslateElementInit() {
                         new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
