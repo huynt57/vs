@@ -86,7 +86,7 @@
                                     <div class="control-group">
                                         <label for="add1" class="control-label">Address</label>
                                         <div class="controls">
-                                            <input type="text" name="add1" id="add1" class="input-xlarge" placeholder="No.34, 3rd floor, CT4 Building, The Manor, Nam Tu Liem, Hanoi" data-rule-required="true" data-rule-minlength="10">                                                                                     
+                                            <input type="text" name="add1" id="add1" class="input-large" placeholder="No.34, 3rd floor, CT4 Building, The Manor, Nam Tu Liem, Hanoi" data-rule-required="true" data-rule-minlength="10">                                                                                     
                                         </div>
                                     </div>
 

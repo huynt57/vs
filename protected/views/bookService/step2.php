@@ -361,7 +361,7 @@
 
                                     <div class="control-group">                                                
                                         <div class="controls">
-                                            <button type="submit" class="btn btn-large btn-primary">Next</button>                                                
+                                            <button type="submit" class="btn btn-large btn-primary" id="btn_step2">Next</button>                                                
                                         </div>
                                     </div>
 
@@ -379,3 +379,13 @@
         </div>                        
     </div>
 </div>        
+<div id="ttt" style="display: none">ioioipoipipoi</div>
+<script>
+
+    $(document).ready(function() {
+       
+        $('#btn_step2').click(function() {
+            $('#ttt').show();
+        });
+    });
+</script>

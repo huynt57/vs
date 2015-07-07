@@ -297,6 +297,12 @@ class BookServiceController extends Controller {
             var_dump($e->getMessage());
         }
     }
+    
+    public function actionOpstep2() {
+        $this->layoutPath = Yii::getPathOfAlias('webroot') . "/themes/classic/views/layouts";
+        $this->layout = 'nonPrepare';
+        $this->render('opstep2');
+    }
 
     // Uncomment the following methods and override them if needed
     /*

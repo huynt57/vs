@@ -5,10 +5,9 @@ class SiteController extends Controller {
     /**
      * Declares class-based actions.
      */
-    
     public $layoutPath;
     public $layout;
-    
+
     public function actions() {
         return array(
             // captcha action renders the CAPTCHA image displayed on the contact page
