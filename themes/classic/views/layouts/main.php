@@ -110,6 +110,29 @@
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/demonstration.min.js"></script>  
 
         <title><?php echo CHtml::encode($this->pageTitle); ?></title>
+        <!--Start of Zopim Live Chat Script-->
+        <script type="text/javascript">
+            window.$zopim || (function(d, s) {
+                var z = $zopim = function(c) {
+                    z._.push(c)
+                }, $ = z.s =
+                        d.createElement(s), e = d.getElementsByTagName(s)[0];
+                z.set = function(o) {
+                    z.set.
+                            _.push(o)
+                };
+                z._ = [];
+                z.set._ = [];
+                $.async = !0;
+                $.setAttribute("charset", "utf-8");
+                $.src = "//v2.zopim.com/?39BNo6VKLCusLFbr7rm0cvN8Wg5HR3UM";
+                z.t = +new Date;
+                $.
+                        type = "text/javascript";
+                e.parentNode.insertBefore($, e)
+            })(document, "script");
+        </script>
+        <!--End of Zopim Live Chat Script-->
     </head>
 
     <body> 
@@ -233,7 +256,7 @@
             </div>
 
 
-            <?php echo $content; ?>
+<?php echo $content; ?>
 
             <div class="clear"></div>
 
