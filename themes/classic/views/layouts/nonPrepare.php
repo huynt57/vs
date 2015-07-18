@@ -48,11 +48,11 @@
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/css/style.css">
         <!-- Color CSS -->
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/css/themes.css">
-                  
-        
+
+
         <!-- jQuery -->
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/jquery.min.js"></script>
-        
+
         <!-- Nice Scroll -->
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/plugins/nicescroll/jquery.nicescroll.min.js"></script>
         <!-- imagesLoaded -->
@@ -110,13 +110,25 @@
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/plugins/complexify/jquery.complexify.min.js"></script>
         <!-- Mockjax -->
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/plugins/mockjax/jquery.mockjax.js"></script>
-    <!-- Theme framework -->
+        <!-- Theme framework -->
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/eakroko.min.js"></script>    
         <!-- Just for demonstration -->
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/demonstration.min.js"></script>
+        <style type="text/css">
+ 
+#share-buttons img {
+width: 35px;
+padding: 5px;
+border: 0;
+box-shadow: 0;
+display: inline;
+}
+ 
+</style>
+
 
     </head>
-    
+
     <body>
 
         <!-- BEGIN -->
@@ -129,8 +141,15 @@
             <!-- The justified navigation menu is meant for single line per list item.
                  Multiple lines will require custom code not provided by Bootstrap. -->
             <div class="masthead">
-                <h1 class="text-muted">Vip Service</h1>
+                <a href="<?php echo Yii::app()->createAbsoluteUrl('bookService') ?>"> <h1 class="text-muted"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/img/logo.png" alt="" class='retina-ready' width="100" height="100"><font color="396396"><strong>  Vip Service</strong></font></h1><a/>               
+
+                    <div id="google_translate_element"></div><script type="text/javascript">
+                        function googleTranslateElementInit() {
+                            new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+                        }
+                    </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
             </div>
+
 
             <div id="navigation">
                 <div class="container-fluid">
@@ -157,15 +176,98 @@
                     </ul>
                 </div>
             </div>
-            
+
             <?php echo $content; ?>
 
             <div class="clear"></div>
 
             <div id="footer">
-                Copyright &copy; <?php echo date('Y'); ?> by VipService.<br/>
-                All Rights Reserved.<br/>    	
+                <div id="share-buttons">
+				    
+				    <!-- Buffer -->
+				    <a href="https://bufferapp.com/add?url=http://vipservice.vn&amp;text=Vipservice.vn" target="_blank">
+				        <img src="https://simplesharebuttons.com/images/somacro/buffer.png" alt="Buffer" />
+				    </a>
+				    
+				    <!-- Digg -->
+				    <a href="http://www.digg.com/submit?url=https://vipservice.vn" target="_blank">
+				        <img src="https://simplesharebuttons.com/images/somacro/diggit.png" alt="Digg" />
+				    </a>
+				    
+				    <!-- Email -->
+				    <a href="mailto:?Subject=Vipservice.vn&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://vipservice.vn">
+				        <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
+				    </a>
+				 
+				    <!-- Facebook -->
+				    <a href="http://www.facebook.com/sharer.php?u=https://vipservice.vn" target="_blank">
+				        <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+				    </a>
+				    
+				    <!-- Google+ -->
+				    <a href="https://plus.google.com/share?url=https://vipservice.vn" target="_blank">
+				        <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
+				    </a>
+				    
+				    <!-- LinkedIn -->
+				    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://vipservice.vn" target="_blank">
+				        <img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" />
+				    </a>
+				    
+				    <!-- Pinterest -->
+				    <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());">
+				        <img src="https://simplesharebuttons.com/images/somacro/pinterest.png" alt="Pinterest" />
+				    </a>
+				    
+				    <!-- Print -->
+				    <a href="javascript:;" onclick="window.print()">
+				        <img src="https://simplesharebuttons.com/images/somacro/print.png" alt="Print" />
+				    </a>
+				    
+				    <!-- Reddit -->
+				    <a href="http://reddit.com/submit?url=http://vipservice.vn&amp;title=Vipservice.vn" target="_blank">
+				        <img src="https://simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" />
+				    </a>
+				    
+				    <!-- StumbleUpon-->
+				    <a href="http://www.stumbleupon.com/submit?url=http://vipservice.vn&amp;title=Vipservice.vn" target="_blank">
+				        <img src="https://simplesharebuttons.com/images/somacro/stumbleupon.png" alt="StumbleUpon" />
+				    </a>
+				    
+				    <!-- Tumblr-->
+				    <a href="http://www.tumblr.com/share/link?url=http://vipservice.vn&amp;title=Vipservice.vn" target="_blank">
+				        <img src="https://simplesharebuttons.com/images/somacro/tumblr.png" alt="Tumblr" />
+				    </a>
+				     
+				    <!-- Twitter -->
+				    <a href="https://twitter.com/share?url=http://vipservice.vn&amp;name=Vipservice.vn&amp;hashtags=simplesharebuttons" target="_blank">
+				        <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
+				    </a>
+				    
+				    <!-- VK -->
+				    <a href="http://vkontakte.ru/share.php?url=https://vipservice.vn" target="_blank">
+				        <img src="https://simplesharebuttons.com/images/somacro/vk.png" alt="VK" />
+				    </a>
+				    
+				    <!-- Yummly -->
+				    <a href="http://www.yummly.com/urb/verify?url=http://vipservice.vn&amp;title=Vipservice.vn" target="_blank">
+				        <img src="https://simplesharebuttons.com/images/somacro/yummly.png" alt="Yummly" />
+				    </a>
+				</div>
+				<br/>
+
+                <span class="font-grey-4">|</span> 
+                <a href="#">Terms and Conditions</a> <span class="font-grey-4">|</span> 
+                <a href="#">Privacy Policy</a> <span class="font-grey-4">|</span> 
+                <a href="#">About us</a> <span class="font-grey-4">|</span> 
+                <a href="#">About us</a> <span class="font-grey-4">|</span>                 
+                <a href="#">Site Map</a> <span class="font-grey-4">|</span> 
+                <a href="#">Third Party Login</a> <span class="font-grey-4">|</span>                 
+                <br>
+                Copyright © 2015 by VipService.<br>
+                All Rights Reserved.<br>    	
             </div><!-- footer -->
+
 
         </div><!-- containder div -->
 

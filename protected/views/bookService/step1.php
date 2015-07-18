@@ -95,6 +95,7 @@
                                         <label for="postcode" class="control-label">Postcode</label>
                                         <div class="controls">
                                             <input type="text" name="postcode" id="postcode" class="input-large" placeholder="100000" data-rule-required="true" data-rule-number="true" data-rule-minlength="2">                                                                                     
+                                            <span class="help-block"><a href="https://en.wikipedia.org/wiki/Postal_codes_in_Vietnam">What is my postcode ?</a></span>          
                                         </div>
                                     </div>
 
