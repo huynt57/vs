@@ -3,7 +3,7 @@
 require_once(Yii::getPathOfAlias('application.components.vendor') . '/autoload.php');
 
 //require_once(Yii::getPathOfAlias('application.components.Paypal') . '/bootstrap.php');
-
+Yii::import('ext.runactions.components.ERunActions');
 
 class BookServiceController extends Controller {
 
@@ -143,8 +143,7 @@ class BookServiceController extends Controller {
                 $this->bill_postcode = $this->getPostFilter('bill_postcode');
 
                 $apiContext = new \PayPal\Rest\ApiContext(new \PayPal\Auth\OAuthTokenCredential(
-                        "AZxYt_EVUMu9xXO0DHBHn4KGUVx6UMIdQKAb7QeCek609Zo3lFCAIfIKs29-T4PL66cSoN6189SfoACj", 
-                        "ELebkFS3jmn9CNu4PF1t8OWaIsHASMDalHKp9x1dwEo0KmeKo582SfeVIC3CC99tmin7NoJZp00jI2Oc"));
+                        "AZxYt_EVUMu9xXO0DHBHn4KGUVx6UMIdQKAb7QeCek609Zo3lFCAIfIKs29-T4PL66cSoN6189SfoACj", "ELebkFS3jmn9CNu4PF1t8OWaIsHASMDalHKp9x1dwEo0KmeKo582SfeVIC3CC99tmin7NoJZp00jI2Oc"));
 
                 $addr = new \PayPal\Api\Address();
                 $addr->setLine1($this->bill_address);
@@ -192,8 +191,12 @@ class BookServiceController extends Controller {
                     // exit(1);
                 }
                 $this->nextStep(3);
-                $this->SendMailConfirm();
-               // die();
+
+                if (ERunActions::runBackground()) {
+                    $this->SendMailConfirm();
+                }
+                // die();
+
                 $this->redirectStep(3);
             } catch (exception $e) {
                 var_dump($e->getMessage());
@@ -217,9 +220,7 @@ class BookServiceController extends Controller {
     }
 
     public function saveDbStepOne() {
-        if (isset($this->airport, $this->date, $this->flight_time, $this->name, $this->add1, 
-                $this->postCode, $this->email, $this->contact_num, $this->size, $this->flight_number, 
-                $this->type)) {
+        if (isset($this->airport, $this->date, $this->flight_time, $this->name, $this->add1, $this->postCode, $this->email, $this->contact_num, $this->size, $this->flight_number, $this->type)) {
             $model = new BookService;
             $model->airport = $this->airport;
             $model->date = $this->date;
@@ -237,7 +238,6 @@ class BookServiceController extends Controller {
             $model->status = 1;
             $model->save(FALSE);
             Yii::app()->session['order_id'] = $model->id;
-           
         }
     }
 
@@ -297,7 +297,7 @@ class BookServiceController extends Controller {
             var_dump($e->getMessage());
         }
     }
-    
+
     public function actionOpstep2() {
         $this->layoutPath = Yii::getPathOfAlias('webroot') . "/themes/classic/views/layouts";
         $this->layout = 'nonPrepare';
